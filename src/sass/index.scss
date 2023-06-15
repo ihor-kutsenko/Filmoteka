@@ -1,2 +1,19 @@
-@import './common';
-@import './example';
+@import './utils/_variables';
+@import './utils/_breakpoints';
+@import './utils/_mixins';
+@import './utils/_theme';
+
+@import './base/_common';
+
+@import './layout/_footer';
+@import './layout/_header';
+@import './layout/_library-footer';
+@import './layout/_library-header';
+@import './layout/_library-main';
+@import './layout/_main';
+
+@import './components/_footer-modal';
+@import './components/_movie-modal';
+@import './components/pagination';
+@import './components/_smooth-scroll';
+@import './components/_spinner';

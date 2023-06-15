@@ -1,0 +1,101 @@
+// SPINNER
+
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  /* фоновый цвет */
+  background: #4a3b4b9d;
+  z-index: 1001;
+
+  padding: 20px;
+  outline: none;
+  border: none;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.preloader {
+  display: none;
+}
+
+.loading .preloader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  display: block;
+  margin-bottom: 40px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 8px solid $primary-bgc;
+  border-right: 8px solid transparent;
+  animation: rotation 1s linear infinite;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border-left: 8px solid #ae1100;
+    border-bottom: 8px solid transparent;
+    animation: rotation 0.5s linear infinite reverse;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-wave {
+  display: block;
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 2px $accent-color, 0 0 1px $accent-color,
+    0 0 1px $accent-color;
+  letter-spacing: 2px;
+  position: relative;
+
+  &::after {
+    content: 'Loading';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ae1100;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    animation: animloader 2000ms linear infinite;
+  }
+}
+
+@keyframes animloader {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
