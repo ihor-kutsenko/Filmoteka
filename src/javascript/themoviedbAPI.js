@@ -8,4 +8,31 @@ export class ThemoviedbAPI {
   query = '';
   genres = [];
 
+  constructor() {
+    this.WATCH_KEY = 'watched';
+    this.QUEUE_KEY = 'queue';
+  }
+// запит на кращі фільми
+  async fetchFavouritesMovies(page) {
+    const params =  new URLSearchParams({
+      api_key: this.#API_KEY,
+      page: page,
+    });
+
+    const { data } = await axios.get('/trending/movie/week', { params });
+    return data;
+  }
+
+
+// запит на ві жанри
+  async fetchGenres() {
+    const params = new URLSearchParams({
+      api_key: this.#API_KEY,
+    });
+
+    const allGenres = await axios.get('genre/movie/list', { params });
+    this.genres = allGenres.data.genres;
+    return allGenres;
+  }
+
 }
