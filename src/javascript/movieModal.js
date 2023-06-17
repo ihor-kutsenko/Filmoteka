@@ -4,6 +4,8 @@ import { createModalMarkUp } from './renderModalMarkUp';
 import { ThemoviedbAPI } from './themoviedbAPI';
 // import { save, load } from './localStorageUse';
 import { spinnerPlay, spinnerStop } from './spiner';
+import { getTrailer } from './getTrailer';
+
 
 
 import Notiflix from 'notiflix';
@@ -83,6 +85,9 @@ async function onFilmCardClick(event) {
       const filmDataObj = getOneMovieInfo(data);
 
       createModalMarkUp(filmData, filmDataObj);
+
+      getTrailer(filmId, movieAPI);
+
 
 
 

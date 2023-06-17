@@ -40,6 +40,22 @@ export class ThemoviedbAPI {
     });
   }
 
+  // trailer
+   async fetchTrailerById(id) {
+    const params = new URLSearchParams({
+      api_key: this.#API_KEY,
+    });
+    return await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?${params}`
+    ).then(response => {
+      if (!response.ok) {
+        throw new Error('Oops, there is no movie with that name');
+      }
+      return response.json();
+    });
+  }
+
+  
 // запит на ві жанри
   async fetchGenres() {
     const params = new URLSearchParams({
@@ -50,5 +66,7 @@ export class ThemoviedbAPI {
     this.genres = allGenres.data.genres;
     return allGenres;
   }
+
+
 
 }
