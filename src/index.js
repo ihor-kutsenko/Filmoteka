@@ -9,6 +9,7 @@ import { renderMarkup } from './javascript/renderMarkup';
 import { options } from './javascript/paginOptions';
 import { scrollFunction } from './javascript/scroll';
 import { spinnerPlay, spinnerStop } from './javascript/spiner';
+import { getItems } from './javascript/movieModal';
 
 
 
@@ -58,6 +59,7 @@ async function startPage() {
     }).join('');
   
   refs.gallery.innerHTML = markup;
+  allProducts = [...getItems(refs.gallery)];
 }
 
 
@@ -77,7 +79,9 @@ async function loadMoreFavouritesMovies(event) {
       return renderMarkup(movie, genres);
     }).join('');
   
-  refs.gallery.innerHTML = markup;
+    refs.gallery.innerHTML = markup;
+    allProducts = [...getItems(refs.gallery)];
+    
   } catch (error) {
     Notify.failure('Ооps, something went wrong, please try again');
   } finally {

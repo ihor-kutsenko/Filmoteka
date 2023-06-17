@@ -252,6 +252,10 @@
   }
 }
 
+.noScroll {
+  overflow: hidden;
+}
+
 @media screen and (min-width: $mobile) {
   .basicLightbox__placeholder {
     width: 280px;
