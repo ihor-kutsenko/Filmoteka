@@ -1,7 +1,13 @@
+// .tui-pagination {
+//   margin-top: 0 !important;
+//   margin-bottom: 0 !important;
+// }
+
 div.tui-pagination {
   margin-top: 0;
   margin-bottom: 60px;
   height: 40px;
+  text-align: center;
 }
 
 div.tui-pagination .tui-page-btn {
@@ -60,6 +66,7 @@ div.tui-pagination .tui-ico-prev,
 div.tui-pagination .tui-ico-first,
 div.tui-pagination .tui-ico-ellip {
   background-image: none;
+  text-indent: -9999px;
 }
 
 div.tui-pagination .tui-page-btn.tui-next::after {
@@ -102,17 +109,3 @@ div.tui-pagination .tui-next-is-ellip::after {
   font-weight: 400;
   font-size: 20px;
 }
-
-// div.tui-pagination .tui-prev-is-ellip.hidden {
-//   position: absolute;
-//   width: 1px;
-//   height: 1px;
-//   margin: -1px;
-//   border: 0;
-//   padding: 0;
-
-//   white-space: nowrap;
-//   clip-path: inset(100%);
-//   clip: rect(0 0 0 0);
-//   overflow: hidden;
-// }

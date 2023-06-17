@@ -92,8 +92,7 @@ main {
   }
 }
 
-// gallery-library
-.gallery--library {
+gallery-library .gallery--library {
   // gap: 20px;
 
   @include min-max-tablet {
@@ -274,37 +273,190 @@ main {
   line-height: 1.16;
   color: #ffffff;
 }
-// ------------------------------
-// .rating__wrapper svg {
-//   border-color: #ffe6b2;
-//   color: #e7bb7d;
-// }
-// .rating-value {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-top: 14px;
-//   width: 52px;
-//   height: 52px;
-//   border: 2px solid #0daabc;
-//   padding: 4px;
-//   border-radius: 50%;
-//   color: #fff;
-//   font-weight: 600;
-//   background-color: #081c22;
-// }
-// .rating__wrapper {
-//   position: relative;
-//   flex-shrink: 0;
-// }
-// .rating__wrapper svg {
-//   width: 16px;
-//   padding: 2px;
-//   background-color: #fff;
-//   color: #0daabc;
-//   border-radius: 50%;
-//   border: 2px solid #0daabc;
-//   position: absolute;
-//   bottom: 5px;
-//   right: 0;
-// }
+
+//  GALLERY LIBRARY EMPTY LIST
+@property --swing-x {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<integer>';
+}
+
+@property --swing-y {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<integer>';
+}
+
+.preserve {
+  transform-style: preserve-3d;
+}
+
+.perspective {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #6f0000, #200122);
+  color: #fafafa;
+  // perspective: 1200px;
+}
+
+.js-title-queue {
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  color: $secondary-text-color;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  overflow: hidden;
+  background: linear-gradient(
+    290deg,
+    rgb(81, 28, 0),
+    rgb(238, 238, 238),
+    rgb(255, 98, 0)
+  );
+  background-repeat: no-repeat;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+
+  animation: swing 2s infinite alternate ease-in-out;
+  transform: translate3d(0, 0, 0vmin);
+
+  @include mobile {
+    margin-top: 40px;
+  }
+
+  @include tablet {
+    font-size: 35px;
+  }
+
+  @include desktop {
+    font-size: 50px;
+  }
+
+  &:after {
+    animation: swing 2s infinite alternate ease-in-out;
+    content: 'Your list is empty...';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgb(0, 0, 0);
+    filter: blur(1.2vmin);
+    transform: scale(1.5) translate3d(0, 12%, -10vmin)
+      translate(
+        calc((var(--swing-x, 0) * 0.05) * 1%),
+        calc((var(--swing-y) * 0.05) * 1%)
+      );
+  }
+}
+
+.example-bg {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.cloak {
+  animation: swing 2s infinite alternate-reverse ease-in-out;
+  height: 100%;
+  width: 100%;
+  transform-origin: 50% 30%;
+  transform: rotate(calc(var(--swing-x) * -0.25deg));
+  background: radial-gradient(
+    50% 40% at 50% 42%,
+    transparent,
+    rgb(101, 0, 0) 35%
+  );
+
+  &--dark {
+    background: radial-gradient(
+      50% 40% at 50% 42%,
+      transparent,
+      rgb(19, 3, 3) 35%
+    );
+  }
+}
+
+.cloak__wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.cloak__container {
+  height: 250vmax;
+  width: 250vmax;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@-moz-keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+
+  50% {
+    --swing-y: 0;
+  }
+
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
+
+@-webkit-keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+
+  50% {
+    --swing-y: 0;
+  }
+
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
+
+@-o-keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+
+  50% {
+    --swing-y: 0;
+  }
+
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
+
+@keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+
+  50% {
+    --swing-y: 0;
+  }
+
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
