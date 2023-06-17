@@ -12,6 +12,11 @@
   border: none;
   width: 100px;
   height: 100px;
+  opacity: 0.3;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .btn-up-text {
@@ -60,10 +65,10 @@
   }
 }
 
-.tui-pagination {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
+// .tui-pagination {
+//   margin-top: 0 !important;
+//   margin-bottom: 0 !important;
+// }
 
 .result-container {
   position: relative;

@@ -7,10 +7,13 @@ import { ThemoviedbAPI } from './javascript/themoviedbAPI';
 import { renderGenres } from './javascript/renderGenres';
 import { renderMarkup } from './javascript/renderMarkup';
 import { options } from './javascript/paginOptions';
+import { scrollFunction } from './javascript/scroll';
+import { spinnerPlay, spinnerStop } from './javascript/spiner';
 
 
 
 const themoviedbAPI = new ThemoviedbAPI();
+export let allProducts = null;
 
 // let options = null;
 
@@ -21,16 +24,22 @@ console.log(themoviedbAPI.fetchFavouritesMovies(1));
 console.log(themoviedbAPI.fetchGenres());
 
 try {
-  startPage()
+  spinnerPlay();
+  startPage();
+
+  window.addEventListener('scroll', scrollFunction);
+
 } catch (error) {
   Notify.failure('Ооps, something went wrong, please try again');
+} finally {
+  spinnerStop();
 }
 
 pagination.on('beforeMove', loadMoreFavouritesMovies);
 
-// pagination.on('afterMove', () => {
-//   window.scrollTo({ top: 0, behavior: 'smooth' });
-// });
+pagination.on('afterMove', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 
 // start page
@@ -51,11 +60,13 @@ async function startPage() {
   refs.gallery.innerHTML = markup;
 }
 
+
 // next pages
 async function loadMoreFavouritesMovies(event) {
   const currentPage = event.page;
 
   try {
+    spinnerPlay();
     const genresIds = await themoviedbAPI.fetchGenres();
     const trendMovies = await themoviedbAPI.fetchFavouritesMovies(currentPage);
     
@@ -69,5 +80,7 @@ async function loadMoreFavouritesMovies(event) {
   refs.gallery.innerHTML = markup;
   } catch (error) {
     Notify.failure('Ооps, something went wrong, please try again');
+  } finally {
+    spinnerStop();
   }
 }

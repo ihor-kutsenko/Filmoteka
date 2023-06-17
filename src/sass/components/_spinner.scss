@@ -52,7 +52,7 @@
     border-radius: 50%;
     border-left: 8px solid #ae1100;
     border-bottom: 8px solid transparent;
-    animation: rotation 0.5s linear infinite reverse;
+    animation: rotation 2500ms linear infinite reverse;
   }
 }
 
@@ -86,7 +86,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    animation: animloader 2000ms linear infinite;
+    animation: animloader 2500ms linear infinite;
   }
 }
 
