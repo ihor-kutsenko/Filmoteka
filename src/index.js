@@ -16,7 +16,7 @@ import { getItems } from './javascript/movieModal';
 const themoviedbAPI = new ThemoviedbAPI();
 export let allProducts = null;
 
-// let options = null;
+
 
 const pagination = new Pagination(refs.paginationContainer, options);
 const page = pagination.getCurrentPage();
