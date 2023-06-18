@@ -10,7 +10,7 @@ import {  load, removeLocal } from './localStorageUse';
 
 
 
-// fised bug github 5
+// fised bug github 5 dfhjfjdgfjkhgf
 
 const themoviedbAPI = new ThemoviedbAPI();
 
