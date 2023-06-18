@@ -2,14 +2,11 @@ import { getOneMovieInfo } from './getMovieInfo';
 import { allProducts } from '/src/index';
 import { createModalMarkUp } from './renderModalMarkUp';
 import { ThemoviedbAPI } from './themoviedbAPI';
-import { save, load } from './localStorageuse';
+import { save, load } from './localStorageUse';
 import { spinnerPlay, spinnerStop } from './spiner';
 import { getTrailer } from './getTrailer';
 
-
-
 import Notiflix from 'notiflix';
-
 
 const movieAPI = new ThemoviedbAPI();
 

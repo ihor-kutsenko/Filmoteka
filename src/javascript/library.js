@@ -6,7 +6,7 @@ import { scrollFunction } from './scroll';
 import { createModalMarkUp } from './renderModalMarkUp';
 import { renderLibraryMarkup } from './renderLibraryMarkUp';
 import { getTrailer } from './getTrailer';
-import {  load, removeLocal } from './localStorageuse';
+import {  load, removeLocal } from './localStorageUse';
 
 
 
