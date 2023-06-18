@@ -2,7 +2,7 @@ import { getOneMovieInfo } from './getMovieInfo';
 import { allProducts } from '/src/index';
 import { createModalMarkUp } from './renderModalMarkUp';
 import { ThemoviedbAPI } from './themoviedbAPI';
-// import { save, load } from './localStorageUse';
+import { save, load } from './localStorageUse';
 import { spinnerPlay, spinnerStop } from './spiner';
 import { getTrailer } from './getTrailer';
 
@@ -47,7 +47,7 @@ function openLightbox(event) {
 }
 
 
-
+// click card
 async function onFilmCardClick(event) {
   const selectedProduct = await getSelectedItem(event, allProducts);
   const filmId = selectedProduct.dataset.id;
@@ -84,14 +84,37 @@ async function onFilmCardClick(event) {
       const stringifiedJSONFilmData = JSON.stringify(filmData);
       const filmDataObj = getOneMovieInfo(data);
 
+      save('modalInfo', filmDataObj);
+
+
       createModalMarkUp(filmData, filmDataObj);
 
       getTrailer(filmId, movieAPI);
 
+      const addToWatchedBtn = document.querySelector(
+        '.lightbox-modal__watched-button'
+      );
 
+      const addToQueueBtn = document.querySelector(
+        '.lightbox-modal__queque-button'
+      );
+      checkLocalStorage(
+        'watched',
+        filmDataObj,
+        addToWatchedBtn,
+        'Added to watched'
+      );
+      checkLocalStorage(
+        'queue',
+        filmDataObj,
+        addToQueueBtn,
+        'Added to queue'
+      );
 
+      addToWatchedBtn.addEventListener('click', onModalBtnClick);
+      addToQueueBtn.addEventListener('click', onModalBtnClick);
 
-     })
+    });
     
   } catch (error) {
     Notify.failure('Ооps, something went wrong, please try again');
@@ -99,4 +122,40 @@ async function onFilmCardClick(event) {
     spinnerStop();
   }
 
+}
+
+
+// click btn
+function onModalBtnClick(event) {
+  addToLocalStorage(
+    +event.target.dataset.btn,
+    event.target.dataset.type,
+    event.target.dataset.id
+  );
+  if ((event.target.dataset.type === 'watched')) {
+    event.target.textContent = 'Added to watched';
+  }
+  if ((event.target.dataset.type === 'queue')) {
+    event.target.textContent = 'Added to queue';
+  }
+  event.target.disabled = true;
+}
+
+function checkLocalStorage(key, filmData, btn, btnText) {
+  const locStorage = load(key);
+  const currentFilm = filmData;
+  const includesFilm = locStorage.find(film => film.id === currentFilm.id);
+
+  if (includesFilm) {
+    btn.textContent = `${btnText}`;
+    btn.disabled = true;
+  }
+}
+
+function addToLocalStorage(id, type, data) {
+  const localStorageItem = load(type) || [];
+  if (localStorageItem.find(info => info?.id === id)) return;
+  const movieInfo = load('modalInfo');
+  localStorageItem.push(movieInfo);
+  save(type, localStorageItem);
 }

@@ -1,0 +1,41 @@
+<main id="main" class="main main-container main-container--gallery">
+  <section
+    class="section gallery-section library library-gallery-section js-gallery-section"
+  >
+    <h2 class="visually-hidden">Gallery with movies</h2>
+    <div class="container library-container js-container">
+      <div class="empty-bg">
+        <h2 class="js-title-queue preserve visually-hidden">
+          Your list is empty...
+        </h2>
+        <img
+          src="./images/movie.png"
+          alt="cinema"
+          class="js-library-bg-image visually-hidden"
+        />
+        <div class="cloak__wrapper preserve">
+          <div class="cloak__container preserve">
+            <div class="cloak preserve"></div>
+          </div>
+        </div>
+      </div>
+      <ul class="gallery gallery--library"></ul>
+    </div>
+  </section>
+
+  <!-- SMOOTH SCROLL -->
+  <div class="btn-up">
+    <p class="btn-up-text">UP</p>
+    <button
+      class="btn-up-wrapper__btn"
+      id="to-top-btn"
+      title="Go to top"
+    ></button>
+  </div>
+
+  <!-- SPINNER -->
+  <div class="preloader">
+    <div class="loader"></div>
+    <div class="loader-wave">Loading...</div>
+  </div>
+</main>
