@@ -5,8 +5,9 @@ import { spinnerPlay, spinnerStop } from './spiner';
 import { scrollFunction } from './scroll';
 import { createModalMarkUp } from './renderModalMarkUp';
 import { renderLibraryMarkup } from './renderLibraryMarkUp';
-import { load, removeLocal } from './localStorageUse';
 import { getTrailer } from './getTrailer';
+import {  load, removeLocal } from './localStorageUse';
+
 
 
 // fised bug
