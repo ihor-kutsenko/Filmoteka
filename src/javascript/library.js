@@ -6,11 +6,11 @@ import { scrollFunction } from './scroll';
 import { createModalMarkUp } from './renderModalMarkUp';
 import { renderLibraryMarkup } from './renderLibraryMarkUp';
 import { getTrailer } from './getTrailer';
-import {  load, removeLocal } from './localStorageUse';
+import {  load, removeLocal } from './localStorage';
 
 
 
-// fised bug github 5 dfhjfjdgfjkhgf
+// fised bug github 5 dfhjfjdgfjkhgfg
 
 const themoviedbAPI = new ThemoviedbAPI();
 
