@@ -23,6 +23,18 @@ export class ThemoviedbAPI {
     return data;
   }
 
+  // search film
+  async fetchMoviesByQuery(page) {
+    const params = new URLSearchParams({
+      api_key: this.#API_KEY,
+      query: this.query,
+      page: page,
+    });
+
+    const { data } = await axios.get('/search/movie', { params });
+    return data;
+  }
+
 
 // запит по id  // 
   async fetchMovieById(id) {
