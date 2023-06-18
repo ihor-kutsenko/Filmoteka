@@ -9,7 +9,7 @@ import { load, removeLocal } from './localStorageUse';
 import { getTrailer } from './getTrailer';
 
 
-
+// fised bug
 
 const themoviedbAPI = new ThemoviedbAPI();
 
