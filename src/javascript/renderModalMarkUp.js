@@ -1,4 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
+const body = document.querySelector('body');
 
 export function createModalMarkUp(
   {
@@ -17,7 +18,7 @@ export function createModalMarkUp(
 ) {
   const instance = basicLightbox.create(
     `
-   <div class="lightbox-modal">
+   <div class="lightbox-modal ${body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme'}">
    <button
       data-map-close
       class="lightbox-modal__close-btn"
@@ -54,9 +55,9 @@ export function createModalMarkUp(
 <div class="lightbox-modal__meta-value">
 <ul class="lightbox-modal__meta-value-list">
 <li class="lightbox-modal__meta-value-list-item"><span class="lightbox-modal__meta-value-vote" data-vote>${vote_average}</span><span class="lightbox-modal__meta-value-votes-divider">/</span><span class="lightbox-modal__meta-value-votes" data-votes>${vote_count}</span></li>
-<li class="lightbox-modal__meta-value-list-item"><span data-popularity>${popularity}</span></li>
-<li class="lightbox-modal__meta-value-list-item"><span class="lightbox-modal__meta-value-title" data-original-title>${originalTitle}</span></li>
-<li class="lightbox-modal__meta-value-list-item"><span data-genre>${genres}</span></li>
+<li class="lightbox-modal__meta-value-list-item"><span class="text-popularity" data-popularity>${popularity}</span></li>
+<li class="lightbox-modal__meta-value-list-item"><span class="text-originalTitle lightbox-modal__meta-value-title" data-original-title>${originalTitle}</span></li>
+<li class="lightbox-modal__meta-value-list-item"><span class="text-genre" data-genre>${genres}</span></li>
 </ul>
 </div>
 </div>

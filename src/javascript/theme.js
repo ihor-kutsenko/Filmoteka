@@ -7,6 +7,7 @@
 
 export const checkBox = document.querySelector('.theme-switch__toggle');
  const body = document.querySelector('body');
+// 
 
 
 
@@ -15,6 +16,7 @@ export function onChange(event) {
   if (event.target.checked) {
     body.classList.remove('ligth-theme');
     body.classList.add('dark-theme');
+    
     localStorage.setItem(STORAGE_KEY, JSON.stringify(Theme.DARK));
 
   } else {
