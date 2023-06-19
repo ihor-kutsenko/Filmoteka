@@ -1,3 +1,216 @@
 .library-gallery-section {
   padding-bottom: 0;
 }
+
+// gallery-library
+.gallery--library {
+  @include min-max-tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @include desktop {
+    flex-wrap: wrap;
+  }
+}
+
+.gallery__item--library {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 438px;
+
+  @include tablet {
+    width: 336px;
+    height: 495px;
+  }
+
+  @include desktop {
+    width: 385px;
+    height: 634px;
+  }
+
+  transition-property: scale;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:active,
+  &:focus {
+    scale: 1.03;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      1px 4px 6px rgba(0, 0, 0, 0.16);
+  }
+}
+
+//  GALLERY LIBRARY EMPTY LIST
+@property --swing-x {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<integer>';
+}
+
+@property --swing-y {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<integer>';
+}
+
+.preserve {
+  transform-style: preserve-3d;
+}
+
+.perspective {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #6f0000, #200122);
+  color: #fafafa;
+  // perspective: 1200px;
+}
+
+.js-title-queue {
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  color: $secondary-text-color;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  overflow: hidden;
+  background: linear-gradient(
+    290deg,
+    rgb(81, 28, 0),
+    rgb(238, 238, 238),
+    rgb(255, 98, 0)
+  );
+  background-repeat: no-repeat;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+
+  animation: swing 2s infinite alternate ease-in-out;
+  transform: translate3d(0, 0, 0vmin);
+
+  @include mobile {
+    margin-top: 40px;
+  }
+
+  @include tablet {
+    font-size: 35px;
+  }
+
+  @include desktop {
+    font-size: 50px;
+  }
+
+  &:after {
+    animation: swing 2s infinite alternate ease-in-out;
+    content: 'Your list is empty...';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgb(0, 0, 0);
+    filter: blur(1.2vmin);
+    transform: scale(1.5) translate3d(0, 12%, -10vmin)
+      translate(
+        calc((var(--swing-x, 0) * 0.05) * 1%),
+        calc((var(--swing-y) * 0.05) * 1%)
+      );
+  }
+}
+
+.example-bg {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.cloak {
+  height: 100%;
+  width: 100%;
+}
+
+.cloak__wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.cloak__container {
+  height: 250vmax;
+  width: 250vmax;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@-moz-keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+
+  50% {
+    --swing-y: 0;
+  }
+
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
+
+@-webkit-keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+
+  50% {
+    --swing-y: 0;
+  }
+
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
+
+@-o-keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+
+  50% {
+    --swing-y: 0;
+  }
+
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
+
+@keyframes swing {
+  0% {
+    --swing-x: -100;
+    --swing-y: -100;
+  }
+
+  50% {
+    --swing-y: 0;
+  }
+
+  100% {
+    --swing-y: -100;
+    --swing-x: 100;
+  }
+}
