@@ -10,7 +10,7 @@ import { options } from './javascript/paginOptions';
 import { scrollFunction } from './javascript/scroll';
 import { spinnerPlay, spinnerStop } from './javascript/spiner';
 import { getItems } from './javascript/movieModal';
-
+import {  checkBox, onChange, isTheme} from './javascript/theme';
 
 
 const themoviedbAPI = new ThemoviedbAPI();
@@ -178,3 +178,12 @@ async function loadMoreMoviesByQuery(event) {
     spinnerStop();
   }
 }
+
+
+// theme 
+
+
+checkBox.addEventListener('change', onChange);
+isTheme();
+
+

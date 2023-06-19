@@ -6,11 +6,12 @@ import { scrollFunction } from './scroll';
 import { createModalMarkUp } from './renderModalMarkUp';
 import { renderLibraryMarkup } from './renderLibraryMarkUp';
 import { getTrailer } from './getTrailer';
-import {  load, removeLocal } from './localStorage';
+import { load, removeLocal } from './localStorage';
+import { libraryCheckBox, onChange, isTheme } from './libraryTheme';
 
 
 
-// fised bug github 5 dfhjfjdgfjkhgfg
+
 
 const themoviedbAPI = new ThemoviedbAPI();
 
@@ -233,3 +234,7 @@ function checkLocalStorageLibrary(key, filmData, btn, btnText, status) {
     btn.classList.add('visually-hidden');
   }
 }
+
+// theme
+libraryCheckBox.addEventListener('change', onChange);
+isTheme();
