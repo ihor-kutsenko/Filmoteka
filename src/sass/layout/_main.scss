@@ -265,6 +265,7 @@ main {
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
+  align-items: center;
   gap: 5px;
   color: $accent-color;
 }
