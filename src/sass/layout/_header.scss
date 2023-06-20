@@ -1,5 +1,7 @@
 .header {
-  height: 216px;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
   position: relative;
   top: 0;
   left: 0;
@@ -15,6 +17,7 @@
 
   @include tablet {
     background-image: $bg-header-gradient, url(../images/header-tablet-min.png);
+    height: 235px;
 
     @include retina {
       background-image: $bg-header-gradient,
@@ -52,11 +55,6 @@
   stroke: #ffffff;
 }
 
-// .logo:hover,
-// .logo:focus {
-//   stroke: $accent-color;
-// }
-
 .logo__name {
   display: none;
 }
@@ -90,21 +88,10 @@
   display: flex;
   justify-content: center;
   padding-bottom: 20px;
-  // height: 24px;
-
-  // @include mobile {
-  //   width: 280px;
-  // }
-
-  // @include desktop {
-  //   width: 472px;
-  // }
 }
 
 .form-search {
   position: relative;
-  // padding-bottom: 92px
-  // display: inline-block;
 }
 
 .form-input {
@@ -184,25 +171,12 @@
 }
 
 @include tablet {
-  // .header-title {
-  //   display: block;
-  //   color: var(--primary-text-color);
-  //   font-weight: 500;
-  //   font-size: 30px;
-  //   line-height: 1.17;
-  // }
-
   .logo__name {
     display: block;
     color: var(--primary-text-color);
     font-weight: 500;
     font-size: 30px;
     line-height: 1.17;
-
-    // &:focus,
-    // &:hover {
-    //   color: $accent-color;
-    // }
   }
 
   .logo-container {

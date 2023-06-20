@@ -1,0 +1,143 @@
+.header__filter-bar {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.header__filter-bar-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header__filter-bar-form {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.filters {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  gap: 6px;
+
+  &__list {
+    display: inline-flex;
+    width: calc(50% - 4px);
+    background-color: transparent;
+  }
+
+  &__item,
+  .custom-select-opener,
+  .custom-select-option {
+    width: 100%;
+    min-height: 44px;
+    background-color: hsla(34, 14%, 90%, 0.4);
+    padding: 12px 6px;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    color: $secondary-text-color;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+      background-color: $accent-color;
+      color: $primary-text-color;
+    }
+  }
+
+  .custom-select-opener {
+    font-weight: 600;
+    text-shadow: 1px 1px 1px hsla(36, 100%, 99%, 0.5);
+  }
+
+  .custom-select-panel {
+    border-radius: 12px;
+    background-color: transparent;
+    margin-top: 10px;
+  }
+
+  .custom-select-option {
+    transform: scale(1);
+    text-shadow: 1px 1px 1px hsla(36, 100%, 99%, 0.5);
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    height: 44px;
+    padding: 6px;
+    border-radius: 10px;
+    border: none;
+    text-transform: uppercase;
+    background-color: $accent-color;
+    position: relative;
+
+    color: $primary-text-color;
+    text-shadow: 0.5px 0.5px 1px #0f0f0f, 0.5px -0.5px 0.5px #f00;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    transform: scale(1);
+    @include transition(transform, box-shadow, background-color);
+
+    &:hover,
+    &:focus {
+      border: none;
+      color: $secondary-text-color;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.custom-select-opener {
+  background-color: transparent;
+}
+.custom-select-container {
+  background-color: transparent;
+  width: 100%;
+  min-width: 120px;
+
+  overflow-x: visible !important;
+}
+
+@media screen and (min-width: $tablet) {
+  .header__filter-bar {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header__filter-bar-form {
+    flex-direction: row;
+  }
+
+  .filters {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    &__list {
+      width: fit-content;
+    }
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .custom-select-option {
+    transform: scale(0.9);
+  }
+}
