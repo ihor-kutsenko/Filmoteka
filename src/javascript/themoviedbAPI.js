@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 export class ThemoviedbAPI {
@@ -78,6 +79,31 @@ export class ThemoviedbAPI {
     this.genres = allGenres.data.genres;
     return allGenres;
   }
+
+  // filter bar
+
+ async fetchFilters(genre, year, language, sort, page) {
+  const params = new URLSearchParams({
+    api_key: this.#API_KEY,
+    with_genres: genre,
+    primary_release_year: year,
+    with_original_language: language,
+    sort_by: sort,
+    page: page,
+  });
+
+  const { data } = await axios.get('/discover/movie', { params });
+  return data;
+}
+
+ 
+
+
+
+
+
+
+
 
 
 

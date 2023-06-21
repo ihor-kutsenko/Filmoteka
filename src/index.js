@@ -10,35 +10,32 @@ import { options } from './javascript/paginOptions';
 import { scrollFunction } from './javascript/scroll';
 import { spinnerPlay, spinnerStop } from './javascript/spiner';
 import { getItems } from './javascript/movieModal';
-import {  checkBox, onChange, isTheme, } from './javascript/theme';
+import { checkBox, onChange, isTheme, } from './javascript/theme';
+
 
 
 const themoviedbAPI = new ThemoviedbAPI();
 export let allProducts = null;
 
-
-
 const pagination = new Pagination(refs.paginationContainer, options);
 const page = pagination.getCurrentPage();
-
 
 
 try {
   spinnerPlay();
   startPage();
-
   window.addEventListener('scroll', scrollFunction);
-
 } catch (error) {
   Notify.failure('Ооps, something went wrong, please try again');
 } finally {
   spinnerStop();
 }
 
+
 refs.formEl.addEventListener('submit', onSearchFormSubmit);
 
-pagination.on('beforeMove', loadMoreFavouritesMovies);
 
+pagination.on('beforeMove', loadMoreFavouritesMovies);
 pagination.on('afterMove', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
@@ -49,9 +46,8 @@ async function startPage() {
   const genresIds = await themoviedbAPI.fetchGenres();
   const trendMovies = await themoviedbAPI.fetchFavouritesMovies(page);
   
-
   pagination.reset(trendMovies.total_results);
-
+  
   const markup = trendMovies.results
     .map(movie => {
       const genres = renderGenres(movie, [...themoviedbAPI.genres]);
@@ -73,16 +69,14 @@ async function onSearchFormSubmit(event) {
   if (!themoviedbAPI.query) {
     return '';
   }
-  
-  try {
+    try {
 
     if (document.querySelector('.input-error')) {
       document.querySelector('.input-error').remove();
     }
-
     spinnerPlay();
     const searchMovies = await themoviedbAPI.fetchMoviesByQuery(page);
-    console.log(searchMovies);
+    
     const markup = searchMovies.results
       .map(movie => {
         const genres = renderGenres(movie, [...themoviedbAPI.genres]);
@@ -95,13 +89,11 @@ async function onSearchFormSubmit(event) {
     pagination.on('beforeMove', loadMoreMoviesByQuery);
     pagination.reset(searchMovies.total_results);
     
-    
     refs.gallery.innerHTML = markup;
     allProducts = [...getItems(refs.gallery)];
 
     refs.noResultsTitle.classList.add('visually-hidden');
     refs.noResultsImg.classList.add('visually-hidden');
-
 
     if (searchMovies.total_results === 0) {
       refs.formEl.insertAdjacentHTML('afterend',
@@ -112,22 +104,16 @@ async function onSearchFormSubmit(event) {
 
       refs.noResultsTitle.classList.remove('visually-hidden');
       refs.noResultsImg.classList.remove('visually-hidden');
-
-
       refs.paginationContainer.style.display = 'none';
-
     } else {
       refs.paginationContainer.style.display = 'block';
     }
-
-    
-    
+       
   } catch (error) {
     Notify.failure('Ооps, something went wrong, please try again');
   } finally {
     spinnerStop();
   }
-
   event.target.reset();
 }
 
@@ -135,7 +121,7 @@ async function onSearchFormSubmit(event) {
 // next pages
 async function loadMoreFavouritesMovies(event) {
   const currentPage = event.page;
-
+  
   try {
     spinnerPlay();
     const genresIds = await themoviedbAPI.fetchGenres();
@@ -178,6 +164,100 @@ async function loadMoreMoviesByQuery(event) {
     spinnerStop();
   }
 }
+
+
+// filter bar
+
+function onFilterFormSubmit(event) {
+  event.preventDefault();
+  refs.gallery.innerHTML = '';
+  
+  const genre = refs.filterGenres.value;
+  const year = refs.filterYears.value;
+  const language = refs.filterLanguage.value;
+  const sort = refs.filtersSort.value;
+  const page = pagination.getCurrentPage();
+
+  fetchMoviesByFilters(genre, year, language, sort, page);
+}
+
+
+refs.filterForm.addEventListener('submit', onFilterFormSubmit);
+
+async function fetchMoviesByFilters(genre, year, language, sort, page) {
+  
+  lastGenre = genre;
+  lastYear = year;
+  lastLanguage = language;
+  lastSort = sort;
+  refs.gallery.innerHTML = "";
+
+  try {
+    spinnerPlay();
+    const searchMovies = await themoviedbAPI.fetchFilters(genre, year, language, sort, 1);
+    
+    const markup = searchMovies.results
+      .map(movie => {
+        const genres = renderGenres(movie, [...themoviedbAPI.genres]);
+        return renderMarkup(movie, genres);
+      })
+      .join('');
+    refs.gallery.innerHTML = markup;
+    allProducts = [...getItems(refs.gallery)];
+    
+    pagination.off('beforeMove', loadMoreFavouritesMovies);
+    pagination.off('beforeMove', loadMoreMoviesByQuery);
+    pagination.on('beforeMove', loadMoreFilteredMovies);
+    pagination.reset(searchMovies.total_results);
+
+    refs.noResultsTitle.classList.add('visually-hidden');
+    refs.noResultsImg.classList.add('visually-hidden');
+
+    if (searchMovies.total_results === 0) {
+      refs.noResultsTitle.classList.remove('visually-hidden');
+      refs.noResultsImg.classList.remove('visually-hidden');
+      refs.paginationContainer.style.display = 'none';
+    } else {
+      refs.paginationContainer.style.display = 'block';
+    }
+    
+  } catch (error) {
+    Notify.failure('Oops, something went wrong');
+  } finally {
+    spinnerStop();
+  }
+
+}
+
+let lastGenre = '';
+let lastYear = '';
+let lastLanguage = '';
+let lastSort = '';
+
+
+async function loadMoreFilteredMovies( event) {
+  const currentPage = event.page;
+     try {
+    spinnerPlay();
+    const searchMovies = await themoviedbAPI.fetchFilters(lastGenre, lastYear, lastLanguage, lastSort, currentPage);
+    console.log(searchMovies);
+    const markup = searchMovies.results
+      .map(movie => {
+        const genres = renderGenres(movie, [...themoviedbAPI.genres]);
+        return renderMarkup(movie, genres);
+      })
+      .join('');
+
+    refs.gallery.innerHTML = markup;
+    allProducts = [...getItems(refs.gallery)];
+  } catch (error) {
+    Notify.failure('Ооps, something went wrong, please try again');
+  } finally {
+    spinnerStop();
+  }
+}
+
+
 
 
 // theme 
