@@ -6,7 +6,7 @@ import { refs } from './javascript/refs';
 import { ThemoviedbAPI } from './javascript/themoviedbAPI';
 import { renderGenres } from './javascript/renderGenres';
 import { renderMarkup } from './javascript/renderMarkup';
-import { options } from './javascript/paginOptions';
+import { paginOptions, paginOptionsLess } from './javascript/paginOptions';
 import { scrollFunction } from './javascript/scroll';
 import { spinnerPlay, spinnerStop } from './javascript/spiner';
 import { getItems } from './javascript/movieModal';
@@ -16,6 +16,11 @@ import { checkBox, onChange, isTheme, } from './javascript/theme';
 
 const themoviedbAPI = new ThemoviedbAPI();
 export let allProducts = null;
+if (window.screen.width <= 580) {
+  options = paginOptionsLess;
+} else {
+  options = paginOptions;
+}
 
 const pagination = new Pagination(refs.paginationContainer, options);
 const page = pagination.getCurrentPage();

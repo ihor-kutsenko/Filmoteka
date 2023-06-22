@@ -7,7 +7,7 @@
 .header__filter-bar-container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 .header__filter-bar-form {
@@ -33,7 +33,7 @@
   &__item,
   .custom-select-opener,
   .custom-select-option {
-    // width: 100%;
+    width: 100%;
     min-height: 44px;
     background-color: hsla(34, 14%, 90%, 0.4);
     padding: 12px 6px;
@@ -131,7 +131,7 @@
     justify-content: center;
 
     &__list {
-      width: fit-content;
+      width: max-content;
     }
   }
 }

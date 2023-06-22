@@ -1050,7 +1050,7 @@ main {
 .header__filter-bar-container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 .header__filter-bar-form {
@@ -1075,6 +1075,7 @@ main {
 .filters__item,
 .filters .custom-select-opener,
 .filters .custom-select-option {
+  width: 100%;
   min-height: 44px;
   background-color: hsla(34, 14%, 90%, 0.4);
   padding: 12px 6px;
@@ -1165,8 +1166,8 @@ main {
     justify-content: center;
   }
   .filters__list {
-    width: -moz-fit-content;
-    width: fit-content;
+    width: -moz-max-content;
+    width: max-content;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -1360,6 +1361,7 @@ main {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
+  padding-right: 10px;
   color: #000000;
 }
 .lightbox-modal__description-title {
