@@ -16,6 +16,8 @@ import { checkBox, onChange, isTheme, } from './javascript/theme';
 
 const themoviedbAPI = new ThemoviedbAPI();
 export let allProducts = null;
+
+let options = null;
 if (window.screen.width <= 580) {
   options = paginOptionsLess;
 } else {
@@ -234,6 +236,8 @@ async function fetchMoviesByFilters(genre, year, language, sort, page) {
 
 }
 
+
+// next page filter bar
 let lastGenre = '';
 let lastYear = '';
 let lastLanguage = '';
@@ -245,7 +249,7 @@ async function loadMoreFilteredMovies( event) {
      try {
     spinnerPlay();
     const searchMovies = await themoviedbAPI.fetchFilters(lastGenre, lastYear, lastLanguage, lastSort, currentPage);
-    console.log(searchMovies);
+    
     const markup = searchMovies.results
       .map(movie => {
         const genres = renderGenres(movie, [...themoviedbAPI.genres]);
