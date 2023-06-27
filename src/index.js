@@ -15,7 +15,7 @@ import { checkBox, onChange, isTheme, } from './javascript/theme';
 
 
 const themoviedbAPI = new ThemoviedbAPI();
-export let allProducts = null;
+export let allFilms = null;
 
 let options = null;
 if (window.screen.width <= 580) {
@@ -63,7 +63,7 @@ async function startPage() {
     }).join('');
   
   refs.gallery.innerHTML = markup;
-  allProducts = [...getItems(refs.gallery)];
+  allFilms = [...getItems(refs.gallery)];
 }
 
 
@@ -97,7 +97,7 @@ async function onSearchFormSubmit(event) {
     pagination.reset(searchMovies.total_results);
     
     refs.gallery.innerHTML = markup;
-    allProducts = [...getItems(refs.gallery)];
+    allFilms = [...getItems(refs.gallery)];
 
     refs.noResultsTitle.classList.add('visually-hidden');
     refs.noResultsImg.classList.add('visually-hidden');
@@ -142,7 +142,7 @@ async function loadMoreFavouritesMovies(event) {
     }).join('');
   
     refs.gallery.innerHTML = markup;
-    allProducts = [...getItems(refs.gallery)];
+    allFilms = [...getItems(refs.gallery)];
     
   } catch (error) {
     Notify.failure('Ооps, something went wrong, please try again');
@@ -164,7 +164,7 @@ async function loadMoreMoviesByQuery(event) {
       })
       .join('');
     refs.gallery.innerHTML = markup;
-    allProducts = [...getItems(refs.gallery)];
+    allFilms = [...getItems(refs.gallery)];
   } catch (error) {
     Notify.failure('Ооps, something went wrong, please try again');
   } finally {
@@ -210,7 +210,7 @@ async function fetchMoviesByFilters(genre, year, language, sort, page) {
       })
       .join('');
     refs.gallery.innerHTML = markup;
-    allProducts = [...getItems(refs.gallery)];
+    allFilms = [...getItems(refs.gallery)];
     
     pagination.off('beforeMove', loadMoreFavouritesMovies);
     pagination.off('beforeMove', loadMoreMoviesByQuery);
@@ -258,7 +258,7 @@ async function loadMoreFilteredMovies( event) {
       .join('');
 
     refs.gallery.innerHTML = markup;
-    allProducts = [...getItems(refs.gallery)];
+    allFilms = [...getItems(refs.gallery)];
   } catch (error) {
     Notify.failure('Ооps, something went wrong, please try again');
   } finally {

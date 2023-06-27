@@ -1,5 +1,5 @@
 import { getOneMovieInfo } from './getMovieInfo'; 
-import { allProducts } from '/src/index';
+import { allFilms } from '/src/index';
 import { createModalMarkUp } from './renderModalMarkUp';
 import { ThemoviedbAPI } from './themoviedbAPI';
 import { save, load } from './localStorage';
@@ -12,9 +12,9 @@ const movieAPI = new ThemoviedbAPI();
 
 export function getItems(parent) {
   const lightboxedCard = parent.childNodes;
-  const allProducts = [...lightboxedCard];
+  const allFilms = [...lightboxedCard];
   lightboxedCard.forEach(item => item.addEventListener('click', openLightbox));
-  return allProducts;
+  return allFilms;
 }
 
 
@@ -46,7 +46,7 @@ function openLightbox(event) {
 
 // click card
 async function onFilmCardClick(event) {
-  const selectedProduct = await getSelectedItem(event, allProducts);
+  const selectedProduct = await getSelectedItem(event, allFilms);
   const filmId = selectedProduct.dataset.id;
 
   try {
