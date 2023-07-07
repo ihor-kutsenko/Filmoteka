@@ -33,7 +33,7 @@ try {
   startPage();
   window.addEventListener('scroll', scrollFunction);
 } catch (error) {
-  Notify.failure('Ооps, something went wrong, please try again');
+  Notiflix.Notify.failure('Ооps, something went wrong, please try again');
 } finally {
   spinnerStop();
 }
@@ -117,7 +117,7 @@ async function onSearchFormSubmit(event) {
     }
        
   } catch (error) {
-    Notify.failure('Ооps, something went wrong, please try again');
+    Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   } finally {
     spinnerStop();
   }
@@ -145,7 +145,7 @@ async function loadMoreFavouritesMovies(event) {
     allFilms = [...getItems(refs.gallery)];
     
   } catch (error) {
-    Notify.failure('Ооps, something went wrong, please try again');
+    Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   } finally {
     spinnerStop();
   }
@@ -166,7 +166,7 @@ async function loadMoreMoviesByQuery(event) {
     refs.gallery.innerHTML = markup;
     allFilms = [...getItems(refs.gallery)];
   } catch (error) {
-    Notify.failure('Ооps, something went wrong, please try again');
+    Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   } finally {
     spinnerStop();
   }
@@ -229,7 +229,7 @@ async function fetchMoviesByFilters(genre, year, language, sort, page) {
     }
     
   } catch (error) {
-    Notify.failure('Oops, something went wrong');
+    Notiflix.Notify.failure('Oops, something went wrong');
   } finally {
     spinnerStop();
   }
@@ -260,7 +260,7 @@ async function loadMoreFilteredMovies( event) {
     refs.gallery.innerHTML = markup;
     allFilms = [...getItems(refs.gallery)];
   } catch (error) {
-    Notify.failure('Ооps, something went wrong, please try again');
+    Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   } finally {
     spinnerStop();
   }

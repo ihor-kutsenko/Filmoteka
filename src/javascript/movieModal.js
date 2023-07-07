@@ -6,7 +6,10 @@ import { save, load } from './localStorage';
 import { spinnerPlay, spinnerStop } from './spiner';
 import { getTrailer } from './getTrailer';
 
+
 import Notiflix from 'notiflix';
+
+
 
 const movieAPI = new ThemoviedbAPI();
 
@@ -51,6 +54,7 @@ async function onFilmCardClick(event) {
 
   try {
     spinnerPlay();
+    
     movieAPI.fetchMovieById(filmId).then(result => {
       const data = result;
 
@@ -114,7 +118,7 @@ async function onFilmCardClick(event) {
     });
     
   } catch (error) {
-    Notify.failure('Ооps, something went wrong, please try again');
+    Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   } finally {
     spinnerStop();
   }

@@ -24,7 +24,7 @@ try {
   window.addEventListener('scroll', scrollFunction);
 
 } catch (error) {
-  Notify.failure('Ооps, something went wrong, please try again');
+  Notiflix.Notify.failure('Ооps, something went wrong, please try again');
 } finally {
   spinnerStop();
 }
@@ -84,7 +84,7 @@ libraryRefs.library.addEventListener('click', onMovieCardClick);
       libraryRefs.library.lastElementChild.setAttribute('data-status', 'watched');
     });
   } catch (error) {
-    Notify.failure('Ооps, something went wrong, please try again');
+    Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   }
 }
 
@@ -114,7 +114,7 @@ libraryRefs.library.addEventListener('click', onMovieCardClick);
     });
   } catch (error) {
     console.log(error);
-    Notify.failure('Ооps, something went wrong, please try again');
+    Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   } finally {
     spinnerStop();
   }
@@ -215,7 +215,7 @@ async function onMovieCardClick(event) {
     });
   } catch (error) {
     console.log(error);
-    Notify.failure('Ооps, something went wrong, please try again');
+    Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   } finally {
     spinnerStop();
   }
