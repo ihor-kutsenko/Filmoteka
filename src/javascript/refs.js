@@ -10,7 +10,7 @@ export const refs = {
   footerLink: document.querySelector('.footer__link'),
   footerBackDrop: document.querySelector('.footer__backdrop'),
   footerCloseBtn: document.querySelector('[data-modal-close]'),
-
+  // header
   filterBar: document.querySelector('.header__filter-bar'),
   filterForm: document.querySelector('.js-filters-form'),
   filterGenres: document.querySelector('.js-filter-genres'),
@@ -18,9 +18,12 @@ export const refs = {
   filterYears: document.querySelector('.js-filter-years'),
   filtersSort: document.querySelector('.js-filter-sort'),
   filterBtn: document.querySelector('.js-filter-btn'),
-
-
-  signInBtnEl: document.querySelector('.js-signIn-btn'),
-  signOutBtnEl: document.querySelector('.js-signOut-btn'),
+  // auth
+  btnSignIn: document.querySelector('.js-signIn-btn'),
+  btnSignOut: document.querySelector('js-signOut-btn'),
+  btnTextSign: document.querySelector('.btn-text'),
+  btnSignOutJs: document.querySelector('.navigation-buttons'),
   userStatusEl: document.querySelector('.js-userStatus'),
-}
+
+  mainContainer: document.querySelector('.main-container'),
+};

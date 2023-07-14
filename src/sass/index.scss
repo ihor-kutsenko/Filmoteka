@@ -5,12 +5,13 @@
 
 @import './base/_common';
 
-@import './layout/_footer';
 @import './layout/_header';
+@import './layout/_main';
+@import './layout/_footer';
 @import './layout/_library-header';
 @import './layout/_library-main';
-@import './layout/_main';
 
+@import './components/auth-modal';
 @import './components/_filter-bar';
 @import './components/_movie-modal';
 @import './components/pagination';

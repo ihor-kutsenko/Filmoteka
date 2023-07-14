@@ -68,8 +68,29 @@ body.dark-theme {
     background-color: $accent-color;
     color: $primary-text-color;
   }
+
+  // auth form
+  .form-wrapper.is-active .switcher-login {
+    color: $primary-text-color;
+  }
+
+  .form-wrapper.is-active .switcher-signup {
+    color: $primary-text-color;
+  }
+  .btn-login {
+    color: $secondary-text-color;
+  }
+
+  .btn-signup {
+    color: $secondary-text-color;
+  }
+
+  .input-block label {
+    color: $secondary-text-color;
+  }
 }
 
+// ===switch
 .toolbar {
   padding: 10px 14px;
   margin-left: 24px;

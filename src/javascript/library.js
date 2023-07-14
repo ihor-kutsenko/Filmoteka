@@ -8,21 +8,16 @@ import { renderLibraryMarkup } from './renderLibraryMarkUp';
 import { getTrailer } from './getTrailer';
 import { load, removeLocal } from './localStorage';
 import { libraryCheckBox, onChange, isTheme } from './libraryTheme';
-
-
-
-
+import { authUser } from './firebase';
 
 const themoviedbAPI = new ThemoviedbAPI();
 
 libraryRefs.watchBtn.classList.add('is-active-library');
 
-
 try {
   spinnerPlay();
   renderWatchedMovies();
   window.addEventListener('scroll', scrollFunction);
-
 } catch (error) {
   Notiflix.Notify.failure('Ооps, something went wrong, please try again');
 } finally {
@@ -43,9 +38,8 @@ libraryRefs.queueBtn.addEventListener('click', () => {
 
 libraryRefs.library.addEventListener('click', onMovieCardClick);
 
-
 // export?
- function displayBg(array) {
+function displayBg(array) {
   const emptyTitle = document.querySelector('.js-title-queue');
   const emptyImg = document.querySelector('.js-library-bg-image');
   const mainEl = document.querySelector('main');
@@ -62,7 +56,7 @@ libraryRefs.library.addEventListener('click', onMovieCardClick);
 }
 
 // export?
- async function renderWatchedMovies() {
+async function renderWatchedMovies() {
   libraryRefs.library.innerHTML = '';
   const watchedMovies = load(themoviedbAPI.WATCH_KEY);
   displayBg(watchedMovies);
@@ -81,16 +75,18 @@ libraryRefs.library.addEventListener('click', onMovieCardClick);
         'beforeend',
         renderLibraryMarkup(movie, genre.join(', '))
       );
-      libraryRefs.library.lastElementChild.setAttribute('data-status', 'watched');
+      libraryRefs.library.lastElementChild.setAttribute(
+        'data-status',
+        'watched'
+      );
     });
   } catch (error) {
     Notiflix.Notify.failure('Ооps, something went wrong, please try again');
   }
 }
 
-
 // export?
- async function renderQueueMovies() {
+async function renderQueueMovies() {
   spinnerPlay();
   libraryRefs.library.innerHTML = '';
   const queueMovies = load(themoviedbAPI.QUEUE_KEY);
@@ -119,7 +115,6 @@ libraryRefs.library.addEventListener('click', onMovieCardClick);
     spinnerStop();
   }
 }
-
 
 // click card
 async function onMovieCardClick(event) {
@@ -238,3 +233,4 @@ function checkLocalStorageLibrary(key, filmData, btn, btnText, status) {
 // theme
 libraryCheckBox.addEventListener('change', onChange);
 isTheme();
+authUser();

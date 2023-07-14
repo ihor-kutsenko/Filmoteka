@@ -1,7 +1,6 @@
 .header {
   display: flex;
   flex-direction: column;
-  height: 320px;
   position: relative;
   top: 0;
   left: 0;
@@ -10,6 +9,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  @media screen and (max-width: $tablet) {
+    height: 360px;
+  }
 
   @include retina {
     background-image: $bg-header-gradient, url(../images/header-mob@2x-min.png);
@@ -33,6 +36,10 @@
         url(../images/header-desktop@2x-min.png);
     }
   }
+}
+
+.container--header {
+  position: relative;
 }
 
 .header-wrapper {
@@ -88,6 +95,11 @@
   display: flex;
   justify-content: center;
   padding-bottom: 20px;
+  @media screen and (max-width: $tablet) {
+    margin-top: 20px;
+  }
+
+  // --
 }
 
 .form-search {
@@ -211,4 +223,83 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
+}
+
+// sign in button
+.navigation-buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  display: flex;
+  transform: translateY(-425%);
+
+  @include tablet {
+    right: 31px;
+    transform: translateY(-350%);
+  }
+
+  @include desktop {
+    transform: translateY(-300%);
+  }
+}
+
+.navigation-btn {
+  transform: translateY(10%);
+  width: fit-content;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.67;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: inherit;
+  fill: $primary-text-color;
+  position: relative;
+
+  &:hover {
+    color: $accent-color;
+    fill: $accent-color;
+  }
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon-out {
+  position: absolute;
+  right: -23px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.icon-in {
+  margin-right: 5px;
+}
+.icon-out.visually-hidden {
+  display: none;
+}
+
+.userStatus {
+  position: absolute;
+  transform: translateY(-225%);
+  right: 20px;
+  bottom: 0;
+  font-size: 14px;
+  line-height: 1.67;
+
+  @include tablet {
+    right: 32px;
+    transform: translateY(-150%);
+  }
+  @include desktop {
+    transform: translateY(-100%);
+  }
 }

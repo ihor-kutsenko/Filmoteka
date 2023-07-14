@@ -14,7 +14,7 @@
 
   background-color: $secondary-bgc;
   color: $footer-text-color;
-  z-index: 1000;
+  z-index: 1;
 
   @media screen and (min-width: $tablet) {
     flex-wrap: nowrap;
@@ -55,39 +55,6 @@
     &:hover {
       color: $accent-color;
     }
-  }
-
-  &__backdrop {
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000000000000;
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.2);
-    top: 0;
-    position: fixed;
-  }
-
-  &__modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 1000000000000;
-
-    padding: 20px;
-    width: calc(100% - 40px);
-    height: 90vh;
-
-    border-radius: 10px;
-    color: $accent-color;
-    text-shadow: 1px 1px 0 rgb(255, 255, 255);
-    background-color: #ebecf0;
-    box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
-
-    text-align: center;
-    overflow-y: auto;
-    font-weight: 500;
-    font-size: 20px;
   }
 }
 

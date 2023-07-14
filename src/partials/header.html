@@ -25,6 +25,23 @@
             >
           </li>
         </ul>
+        <!-- sign in -->
+        <ul class="navigation-buttons">
+          <li class="js-signIn-btn">
+            <button class="navigation-btn">
+              <span class="btn-icon">
+                <svg class="icon-in" width="16" height="16">
+                  <use href="./images/icons.svg#icon-sign-in"></use>
+                </svg>
+                <svg class="icon-out visually-hidden" width="16" height="16">
+                  <use href="./images/icons.svg#icon-sign-out"></use>
+                </svg>
+              </span>
+              <span class="btn-text">Sign In</span>
+            </button>
+          </li>
+        </ul>
+        <p class="js-userStatus userStatus">You are not logged</p>
       </nav>
     </div>
 
@@ -43,7 +60,10 @@
     </form>
   </div>
 
+  <!-- filter bar -->
   <include src="./partials/filter-bar.html"></include>
+
+  <!-- theme switch -->
 
   <div class="toolbar">
     <div class="theme-switch">
